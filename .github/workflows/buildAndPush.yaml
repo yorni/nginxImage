@@ -24,3 +24,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USER }}/nginx-auth-image:latest
+          secrets: |
+            "BASIC_USERNAME=${{ secrets.BASIC_USERNAME }}"
+            "BASIC_PASSWORD=${{ secrets.BASIC_PASSWORD }}"
