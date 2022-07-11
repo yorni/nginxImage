@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello user</title>
+  </head>
+  <body>
+    <p id='hello'></p>
+    <script type="text/javascript">
+	document.addEventListener("DOMContentLoaded", function(event) { 
+		let req = new XMLHttpRequest();
+        	req.open('GET', document.location, false);
+	        req.send(null);
+        	let username = req.getResponseHeader("nginx-remote_user");
+	        document.getElementById("hello").innerHTML = "Hello "+username+"!";
+	});
+    </script>
+  </body>
+</html>
