@@ -4,8 +4,10 @@ RUN --mount=type=secret,id=BASIC_USERNAME \
    export BASIC_USERNAME=$(cat /run/secrets/BASIC_USERNAME) && \
    export BASIC_PASSWORD=$(cat /run/secrets/BASIC_PASSWORD) 
 RUN apk add --no-cache gettext apache2-utils
+RUN htpasswd -bc ./auth.htpasswd $BASIC_USERNAME $BASIC_PASSWORD
 COPY html/ /usr/share/nginx/html/
 COPY nginx.conf /etc/nginx/conf.d/auth.conf
+COPY auth.htpasswd /etc/nginx/auth.htpasswd
 WORKDIR /opt
 COPY launch.sh ./
 RUN ["chmod", "u+x", "launch.sh"]
