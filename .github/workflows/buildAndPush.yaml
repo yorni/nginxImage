@@ -18,4 +18,4 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag nginx-auth-image:$(date +%s)
       - name: Docker Push
-        run: docker push push yorni/nginx-auth-image:$(date +%s)
+        run: docker push yorni/nginx-auth-image:$(date +%s)
